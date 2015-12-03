@@ -5,13 +5,13 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-var mongodbURL = 'mongodb://<dbuser>:<dbpassword>@ds054118.mongolab.com:54118/MongoLab-j';
+var mongodbURL = 'mongodb://chuncheongmak:a12345678@ds054118.mongolab.com/MongoLab-j';
 var mongoose = require('mongoose');
 
 app.post('/',function(req,res) {
 	//console.log(req.body);
 	var restaurantSchema = require('./models/restaurant');
-	mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds053148.mongolab.com:53148/<database name>');
+	mongoose.connect('mongodb://chuncheongmak:a12345678@ds053148.mongolab.com:53148/MongoLab-j');
 	var db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'connection error:'));
 	db.once('open', function (callback) {
@@ -45,7 +45,7 @@ app.post('/',function(req,res) {
 
 app.delete('/restaurant_id/:id',function(req,res) {
 	var restaurantSchema = require('./models/restaurant');
-	mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds053148.mongolab.com:53148/<database name>');
+	mongoose.connect('mongodb://chuncheongmak:a12345678@ds053148.mongolab.com:53148/MongoLab-j');
 	var db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'connection error:'));
 	db.once('open', function (callback) {
@@ -64,7 +64,7 @@ app.delete('/restaurant_id/:id',function(req,res) {
 
 app.get('/restaurant_id/:id', function(req,res) {
 	var restaurantSchema = require('./models/restaurant');
-	mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds053148.mongolab.com:53148/<database name>');
+	mongoose.connect('mongodb://chuncheongmak:a12345678@ds053148.mongolab.com:53148/MongoLab-j');
 	var db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'connection error:'));
 	db.once('open', function (callback) {
