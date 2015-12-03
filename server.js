@@ -5,13 +5,13 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-var mongodbURL = 'mongodb://chuncheongmak:a12345678@ds054118.mongolab.com:54118/MongoLab-j';
+var mongodbURL = 'mongodb://localhost:27017/test';
 var mongoose = require('mongoose');
 
 app.post('/',function(req,res) {
 	//console.log(req.body);
-	var restaurantSchema = require('.models/restaurant');
-	mongoose.connect('mongodb://chuncheongmak:a12345678@ds054118.mongolab.com:54118/MongoLab-j/collections/test');
+	var restaurantSchema = require('./models/restaurant');
+	mongoose.connect('mongodb://localhost/test');
 	var db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'connection error:'));
 	db.once('open', function (callback) {
@@ -44,8 +44,8 @@ app.post('/',function(req,res) {
 });
 
 app.delete('/restaurant_id/:id',function(req,res) {
-	var restaurantSchema = require('.models/restaurant');
-	mongoose.connect('mongodb://chuncheongmak:a12345678@ds054118.mongolab.com:54118/MongoLab-j/collections/test');
+	var restaurantSchema = require('./models/restaurant');
+	mongoose.connect('mongodb://localhost/test');
 	var db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'connection error:'));
 	db.once('open', function (callback) {
@@ -63,8 +63,8 @@ app.delete('/restaurant_id/:id',function(req,res) {
 });
 
 app.get('/restaurant_id/:id', function(req,res) {
-	var restaurantSchema = require('.models/restaurant');
-	mongoose.connect('mongodb://chuncheongmak:a12345678@ds054118.mongolab.com:54118/MongoLab-j/collections/test');
+	var restaurantSchema = require('./models/restaurant');
+	mongoose.connect('mongodb://localhost/test');
 	var db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'connection error:'));
 	db.once('open', function (callback) {
