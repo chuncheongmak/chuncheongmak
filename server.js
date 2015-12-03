@@ -7,7 +7,7 @@ app.use(bodyParser.json());
 
 var mongodbURL = 'mongodb://chuncheongmak:a12345678@ds054118.mongolab.com:54118/MongoLab-j';
 var mongoose = require('mongoose');
-chuncheongmak:@ds054118.mongolab.com:54118/MongoLab-j
+
 app.post('/',function(req,res) {
 	//console.log(req.body);
 	var restaurantSchema = require('./models/restaurant');
