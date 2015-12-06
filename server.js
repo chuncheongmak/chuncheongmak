@@ -124,6 +124,7 @@ res.write(err.message);
 }
 else {
 db.close();
+res.status(200).json({message: 'update done'});
 res.end('Done',200);
 }
 });
