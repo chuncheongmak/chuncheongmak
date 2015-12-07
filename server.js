@@ -130,4 +130,28 @@ res.end('Done',200);
 });
 });
 });
+app.post('/restaurant_id/name',function(req,res) {
+//console.log(req.body);
+var restaurantSchema = require('./models/restaurant');
+mongoose.connect(mongodbURL)
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function (callback) {
+var rObj = {};
+rObj.name = req.body.name;
+rObj.restaurant_id = req.body.restaurant_id;
+var Restaurant = mongoose.model('Restaurant', restaurantSchema);
+var r = new Restaurant(rObj);
+//console.log(r);
+r.save(function(err) {
+if (err) {
+res.status(500).json(err);
+throw err
+}
+//console.log('Restaurant created!')
+db.close();
+res.status(200).json({message: 'insert done', id: r._id});
+});
+});
+});
 app.listen(process.env.PORT || 8099);
